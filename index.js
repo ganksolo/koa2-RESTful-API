@@ -2,7 +2,6 @@ const Koa = require('koa');
 const app = new Koa();
 
 const KoaRouter = require('koa-router');
-// const api = require('./api/test');
 const apiRouter = new KoaRouter();
 
 apiRouter.prefix('/api');
