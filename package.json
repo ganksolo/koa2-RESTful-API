@@ -18,7 +18,8 @@
   "homepage": "https://github.com/ganksolo/koa2-RESTful-API#readme",
   "dependencies": {
     "koa": "^2.11.0",
-    "koa-router": "^8.0.8"
+    "koa-router": "^8.0.8",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
