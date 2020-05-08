@@ -8,7 +8,7 @@ const routes = require('./routes/index');
 
 
 // router error
-app.use(errorRoute());
+// app.use(errorRoute());
 
 // 注册所有路由
 routes.forEach(router => {

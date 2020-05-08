@@ -5,6 +5,9 @@ class AdminController {
     async role(ctx, next) {
         ctx.body = 'this is admin role data';
     }
+    async config(ctx, next) {
+        ctx.body = 'this is admin config!';
+    }
 }
 
 module.exports = new AdminController()
