@@ -6,7 +6,7 @@ class AdminController {
         ctx.body = 'this is admin role data';
     }
     async config(ctx, next) {
-        ctx.body = 'this is admin config!';
+        ctx.body = 'this is admin config!depoly';
     }
 }
 
