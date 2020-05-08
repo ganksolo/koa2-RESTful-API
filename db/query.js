@@ -1,11 +1,6 @@
 const mysql = require('mysql')
-
-const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: '123456',
-    database: 'my_db'
-})
+const { database } = require('./config');
+const pool = mysql.createPool(database)
 
 let query = function (sql, values) {
 
