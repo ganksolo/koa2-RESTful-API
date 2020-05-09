@@ -13,7 +13,9 @@ router.get('/test', (ctx, next) => {
         param: ctx.params
     }
 })
+
+
+router.get('/list', userController.getUserList);
 router.get('/:id', userController.getUserInfo);
-router.post('/list', userController.getUserList);
 
 module.exports = router;

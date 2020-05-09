@@ -1,9 +1,9 @@
-const admin = require('./admin');
-const users = require('./users');
-const home = require('./home');
+const fs = require('fs');
 
-module.exports = [
-    admin, 
-    users,
-    home
-];
+module.exports = (app) => {
+    fs.readdirSync(__dirname).forEach((file) => {
+        if(file === 'index.js') return;
+        const route = require(`./${file}`);
+        app.use(route.routes(), route.allowedMethods());
+    })
+}

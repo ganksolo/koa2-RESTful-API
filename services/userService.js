@@ -11,6 +11,11 @@ class usersService {
         let userList = await query(sql);
         return userList;
     }
+    async updateUserInfo() {
+        let sql = 'UPDATE user SET name=? WHERE id=?';
+        let query = await query(sql, [username, id]);
+        return query;
+    }
 }
 
 module.exports = new usersService()

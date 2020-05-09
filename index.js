@@ -11,9 +11,7 @@ const routes = require('./routes/index');
 // app.use(errorRoute());
 
 // 注册所有路由
-routes.forEach(router => {
-    app.use(router.routes(), router.allowedMethods());
-})
+routes(app);
 
 
 app.listen(3000, () => {
