@@ -11,26 +11,36 @@ class UserController {
     async getUserList(ctx, next) {
         let data = await userService.getUserList();
         ctx.body = {
+            code: 200,
             msg: 'get user list data success!',
-            result: data,
-            code: 1,
+            data: data
         }
     }
 
     async getUserInfo(ctx, next) {
         let data = await userService.getUserInfoByUserId(ctx.params.id);
         ctx.body = {
+            code: 200,
             msg: `get user info by id =${ctx.params.id}`,
-            result: data[0],
-            code: 1,
+            data: data[0]
         }
     }
 
     async updateUserInfo(ctx, next) {
-        let data = await userService.updateUserInfo()
+
+        ctx.verifyParams({
+            id: {type: 'string', require: true},
+            name: { type: 'string', require: true}
+        })
+        let {
+            id,
+            name
+        } = ctx.request.body;
+        // ctx.response.status = 302;
+        let data = await userService.updateUserInfo(id, name)
         ctx.body = {
-            msg: 'update user name by id success!',
-            code: 1,
+            code: 200,
+            msg: `update user ${name} success!`
         }
     }
 }

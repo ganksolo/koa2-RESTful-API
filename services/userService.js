@@ -11,10 +11,10 @@ class usersService {
         let userList = await query(sql);
         return userList;
     }
-    async updateUserInfo() {
+    async updateUserInfo(id, username) {
         let sql = 'UPDATE user SET name=? WHERE id=?';
-        let query = await query(sql, [username, id]);
-        return query;
+        let result = await query(sql, [username, id]);
+        return result;
     }
 }
 
