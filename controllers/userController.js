@@ -1,12 +1,7 @@
+const jwt = require('jsonwebtoken');
 const userService = require('../services/userService');
 
 class UserController {
-    async login(ctx, next) {
-        let params = ctx.request.body || ctx.request.query
-        let username = escape(params.username)
-        data = await userService.getUserInfoByUserId(username)
-        ctx.body = data
-    }
 
     async getUserList(ctx, next) {
         let data = await userService.getUserList();

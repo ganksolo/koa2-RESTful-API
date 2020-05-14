@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/ganksolo/koa2-RESTful-API#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",
     "koa-body": "^4.1.1",
+    "koa-jwt": "^3.6.0",
     "koa-parameter": "^3.0.1",
     "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
