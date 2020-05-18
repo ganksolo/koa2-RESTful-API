@@ -16,6 +16,9 @@ const routes = require('./routes/index');
 app.use(koaStatic(
     path.join(__dirname, './assets/')
 ));
+
+
+
 app.use(jwt({ secret: process.env.SECRET_KEY }).unless({
     path: [/^\/public|\/auth|\/assets/]
 }));
@@ -33,7 +36,8 @@ app.use(koaBody({
         keepExtensions: true,    // 保持文件的后缀
         maxFieldsSize: 2 * 1024 * 1024, // 文件上传大小
     },
-}))
+}));
+
 
 // 注册所有路由
 routes(app);

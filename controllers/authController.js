@@ -10,7 +10,6 @@ class AuthController {
         })
         const { username, password } = ctx.request.body;
         const userInfo = await userService.queryUser(username);
-
         if (userInfo[0].password === password) {
             const token = jwt.sign(
                 { userInfo: userInfo[0] }, 

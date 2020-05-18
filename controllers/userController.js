@@ -1,9 +1,11 @@
-const jwt = require('jsonwebtoken');
 const userService = require('../services/userService');
+const authController = require('./authController');
 
 class UserController {
 
     async getUserList(ctx, next) {
+        const authorization = ctx.request.header.authorization
+        const token = authorization.split(' ')[1]
         let data = await userService.getUserList();
         ctx.body = {
             code: 200,
