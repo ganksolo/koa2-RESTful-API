@@ -25,7 +25,21 @@ class AuthController {
         
     }
 
-    verifySecretKey(ctx, next) {
+    async varifyMobile(ctx, next) {
+        ctx.verifyParams({
+            mobile: {type: 'string', require: true}
+        });
+        const { mobile } = ctx.query;
+        const result = await userService.queryMobile(mobile)
+        const isExist = result.length > 0 ? true : false;
+        ctx.body = {
+            code: 200,
+            msg: 'Query Ok!',
+            data: isExist
+        }
+    }
+
+    async verifySecretKey(ctx, next) {
         const token = ctx.request.header.authorization;
         try {
             const decode = sign.verify(token.substr(3), secret_key);

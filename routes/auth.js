@@ -10,7 +10,10 @@ router.get('/', (ctx, next) => {
     ctx.body = {
         msg: 'ok'
     }
-})
+});
+
+router.get('/verify', authController.varifyMobile);
+
 router.post('/login', authController.login);
 
 module.exports = router

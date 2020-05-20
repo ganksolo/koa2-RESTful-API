@@ -12,6 +12,12 @@ class AuthService {
         let result = await query(sql, username);
         return result;
     }
+
+    async queryMobile(value) {
+        let sql = 'SELECT * FROM user WHERE mobile=?';
+        let result = await query(sql, value);
+        return result;
+    }
 }
 
 module.exports = new AuthService()
