@@ -27,12 +27,33 @@ class AuthController {
 
     async register(ctx, next) {
         const {
-            username,
+            name,
             password,
-            email,
             nick,
-            mobile,
-        } = ctx.request.body
+            email,
+            mobile
+        } = ctx.request.body;
+        ctx.verifyParams({
+            name: { type: 'string', require: true },
+            password: { type: 'password', require: true },
+            nick: { type: 'string', require: true },
+            email: { type: 'email', require: true },
+            mobile: { type: 'number', require: true },
+        })
+
+        const params = ctx.request.body;
+        const keys = Object.keys(params);
+        const vals = Object.values(params);
+        const result = await userService.insertUser(keys, vals);
+        if(result) {
+            ctx.body = {
+                code: 200,
+                msg: 'Insert user sucess!',
+                data: {
+                    id: result.insertId
+                }
+            }
+        }
     }
 
     async varify(ctx, next) {

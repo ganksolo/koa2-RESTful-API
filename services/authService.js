@@ -1,28 +1,45 @@
 const { query } = require('../db/query');
+const mysql = require('mysql')
 
 class AuthService {
     async getUserInfoByUserId(id) {
-        let sql = 'SELECT * FROM user WHERE id=?';
-        let userInfo = await query(sql, id);
-        return userInfo;
+        try {
+            let sql = 'SELECT * FROM user WHERE id=?';
+            let userInfo = await query(sql, id);
+            return userInfo;
+        } catch (error) {
+            console.log(error.sql)
+        }
     }
 
     async queryUser(username) {
-        let sql = 'SELECT * FROM user WHERE name=?';
-        let result = await query(sql, username);
-        return result;
+        try {
+            let sql = 'SELECT * FROM user WHERE name=?';
+            let result = await query(sql, username);
+            return result;
+        } catch (error) {
+            console.log(error.sql)
+        }
     }
 
     async queryFieldInfo(keys, value) {
-        let sql = 'SELECT * FROM user WHERE ??=?';
-        let result = await query(sql, [keys, value]);
-        return result;
+        try {
+            let sql = 'SELECT * FROM user WHERE ??=?';
+            let result = await query(sql, [keys, value]);
+            return result;
+        } catch (error) {
+            console.log(error.sql)
+        }
     }
 
     async insertUser(keys, values) {
-        let sql = 'INSERT INTO user (??) VALUES (?)';
-        let result = await query(query, [keys, values])
-        return result;
+        try {
+            let sql = 'INSERT INTO user (??) VALUES (?)';
+            let result = await query(sql, [keys, values])
+            return result;
+        } catch (error) {
+            console.log(error.sql)
+        }
     }
 }
 
