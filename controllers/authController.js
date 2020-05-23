@@ -25,16 +25,27 @@ class AuthController {
         
     }
 
-    async varifyMobile(ctx, next) {
+    async register(ctx, next) {
+        const {
+            username,
+            password,
+            email,
+            nick,
+            mobile,
+        } = ctx.request.body
+    }
+
+    async varify(ctx, next) {
+        const key = Object.keys(ctx.query)[0];
         ctx.verifyParams({
-            mobile: {type: 'string', require: true}
+            [key || 'queryFieldName']: {type: 'string', require: true}
         });
-        const { mobile } = ctx.query;
-        const result = await userService.queryMobile(mobile)
+        const val = ctx.query[key];
+        const result = await userService.queryFieldInfo(key, val)
         const isExist = result.length > 0 ? true : false;
         ctx.body = {
             code: 200,
-            msg: 'Query Ok!',
+            msg: `'${key}' Field Query Ok!`,
             data: isExist
         }
     }

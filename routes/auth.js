@@ -12,8 +12,10 @@ router.get('/', (ctx, next) => {
     }
 });
 
-router.get('/verify', authController.varifyMobile);
+router.get('/verify', authController.varify);
 
 router.post('/login', authController.login);
+
+router.post('/register', authController.register)
 
 module.exports = router

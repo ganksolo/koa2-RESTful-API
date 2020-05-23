@@ -13,9 +13,15 @@ class AuthService {
         return result;
     }
 
-    async queryMobile(value) {
-        let sql = 'SELECT * FROM user WHERE mobile=?';
-        let result = await query(sql, value);
+    async queryFieldInfo(keys, value) {
+        let sql = 'SELECT * FROM user WHERE ??=?';
+        let result = await query(sql, [keys, value]);
+        return result;
+    }
+
+    async insertUser(keys, values) {
+        let sql = 'INSERT INTO user (??) VALUES (?)';
+        let result = await query(query, [keys, values])
         return result;
     }
 }
